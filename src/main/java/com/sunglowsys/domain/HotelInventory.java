@@ -10,12 +10,19 @@ public class HotelInventory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @NotNull
-    @Column(name = "hotel_inventory")
+
+    @Column(nullable = false)
     private String hotelInventory;
+
+    public HotelInventory() {
+    }
+
+    public HotelInventory(Long id, String hotelInventory) {
+        this.id = id;
+        this.hotelInventory = hotelInventory;
+    }
 
     public Long getId() {
         return id;
