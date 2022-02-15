@@ -27,7 +27,7 @@ public class HotelInventoryResource {
     }
 
     @PostMapping("/hotel-inventories")
-    public ResponseEntity<?> createHotelInventory(@RequestBody HotelInventory hotelInventory) throws URISyntaxException {
+    public ResponseEntity<HotelInventory> createHotelInventory(@RequestBody HotelInventory hotelInventory) throws URISyntaxException {
         log.debug("Rest Request to save HotelInventory: {}",hotelInventory);
         if (hotelInventory.getId() != null){
             throw new RuntimeException("Id should be null in create API calls");
@@ -35,7 +35,7 @@ public class HotelInventoryResource {
         HotelInventory result = hotelInventoryService.create(hotelInventory);
         return ResponseEntity
                 .created(new URI("/api/hotel-inventories/"+result.getId()))
-                .body("HotelInventory is created:"+result);
+                .body(result);
     }
 
     @GetMapping("/hotel-inventories")

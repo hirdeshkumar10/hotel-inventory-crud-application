@@ -7,9 +7,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class HotelInventoryServiceImpl implements HotelInventoryService{
 
     private final Logger log = LoggerFactory.getLogger(HotelInventoryServiceImpl.class);
